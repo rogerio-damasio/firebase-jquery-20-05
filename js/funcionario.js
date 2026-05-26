@@ -8,8 +8,8 @@ $("#cancelar").hide();
 $("#salvar").click(function (){
     let nome = $("#nome").val().toUpperCase();
     let email = $("#email").val().toLowerCase();
-    let email = $("#cargo").val().toLowerCase();
-    let email = $("#idpess").val().toLowerCase();
+    let cargo = $("#cargo").val().toLowerCase();
+    let idpess = $("#idpess").val().toLowerCase();
 
     if(nome === "" || email === "" || cargo === "" || idpess === ""){
         alert('Preencha todos os campos');
@@ -46,7 +46,7 @@ ref.on("value", dados_tabela => {
             <th>Nome</th>
             <th>E-mail</th>
             <th>Cargo</th>
-            <th>ID-Funcionario</th>
+            <th>idpess</th>
             <th colspan="2">Opções</th>
         </tr>
     `);
