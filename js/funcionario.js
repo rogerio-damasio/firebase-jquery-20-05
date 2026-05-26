@@ -1,4 +1,4 @@
-const ref = db.ref("clientes")
+const ref = db.ref("funcionarios")
 
 
 let idcapturado = null;
@@ -8,14 +8,16 @@ $("#cancelar").hide();
 $("#salvar").click(function (){
     let nome = $("#nome").val().toUpperCase();
     let email = $("#email").val().toLowerCase();
+    let email = $("#cargo").val().toLowerCase();
+    let email = $("#idpess").val().toLowerCase();
 
-    if(nome === "" || email === ""){
+    if(nome === "" || email === "" || cargo === "" || idpess === ""){
         alert('Preencha todos os campos');
         return
     }
 
     if (idcapturado) {//Editar
-        ref.child(idcapturado).update({nome, email});
+        ref.child(idcapturado).update({nome, email, cargo, idpess});
         idcapturado = null;
         $("#salvar").text("Salvar");
 
@@ -23,7 +25,7 @@ $("#salvar").click(function (){
         $("#salvar").removeClass("btn-success").addClass("btn-primary");
          $("#status"). text("");
     } else {//Salvar
-        ref.push({ nome, email });    
+        ref.push({ nome, email, cargo, idpess });    
     }
 
     
@@ -43,6 +45,8 @@ ref.on("value", dados_tabela => {
             <th>ID</th>
             <th>Nome</th>
             <th>E-mail</th>
+            <th>Cargo</th>
+            <th>ID-Funcionario</th>
             <th colspan="2">Opções</th>
         </tr>
     `);
@@ -57,13 +61,15 @@ ref.on("value", dados_tabela => {
                 <td>${id}</td>
                 <td>${reg.nome}</td>
                 <td>${reg.email}</td>
+                <td>${reg.cargo}</td>
+                <td>${reg.idpess}</td>
                 <td>
                     <button class="btn btn-danger btn-sm">
                         <i class="bi bi-trash"></i>
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-warning btn-sm" onclick="editar('${id}', '${reg.nome}', '${reg.email}')">
+                    <button class="btn btn-warning btn-sm" onclick="editar('${id}', '${reg.nome}', '${reg.email}', '${reg.cargo}', '${reg.idpess}')">
                         <i class="bi bi-pencil"></i>
                     </button>
                 </td>
@@ -78,6 +84,8 @@ ref.on("value", dados_tabela => {
 function limpar(){
     $("#nome").val("");
     $("#email").val("");
+    $("#cargo").val("");
+    $("#idpess").val("");
     $("#nome").focus("");
 }
 
@@ -85,8 +93,8 @@ function limpar(){
 function editar(id, nome, email){
     $("#nome").val(nome);
     $("#email").val(email);
-    $("#email").val(cargo);
-    $("#email").val(idpess);
+    $("#cargo").val(cargo);
+    $("#idpess").val(idpess);
 
     idcapturado = id;
 
