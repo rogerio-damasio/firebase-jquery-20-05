@@ -46,7 +46,7 @@ ref.on("value", dados_tabela => {
             <th>Nome</th>
             <th>E-mail</th>
             <th>Cargo</th>
-            <th>idpess</th>
+            <th>ID-Funcionário</th>
             <th colspan="2">Opções</th>
         </tr>
     `);
