@@ -90,7 +90,7 @@ function limpar(){
 }
 
 //Função Editar
-function editar(id, nome, email){
+function editar(id, nome, email, cargo, idpess){
     $("#nome").val(nome);
     $("#email").val(email);
     $("#cargo").val(cargo);
