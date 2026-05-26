@@ -9,15 +9,15 @@ $("#salvar").click(function (){
     let nome = $("#nome").val().toUpperCase();
     let email = $("#email").val().toLowerCase();
     let cargo = $("#cargo").val().toLowerCase();
-    let idpess = $("#idpess").val().toLowerCase();
+    let funcio = $("#funcio").val().toLowerCase();
 
-    if(nome === "" || email === "" || cargo === "" || idpess === ""){
+    if(nome === "" || email === "" || cargo === "" || funcio === ""){
         alert('Preencha todos os campos');
         return
     }
 
     if (idcapturado) {//Editar
-        ref.child(idcapturado).update({nome, email, cargo, idpess});
+        ref.child(idcapturado).update({nome, email, cargo, funcio});
         idcapturado = null;
         $("#salvar").text("Salvar");
 
@@ -25,7 +25,7 @@ $("#salvar").click(function (){
         $("#salvar").removeClass("btn-success").addClass("btn-primary");
          $("#status"). text("");
     } else {//Salvar
-        ref.push({ nome, email, cargo, idpess });    
+        ref.push({ nome, email, cargo, funcio });    
     }
 
     
@@ -62,14 +62,14 @@ ref.on("value", dados_tabela => {
                 <td>${reg.nome}</td>
                 <td>${reg.email}</td>
                 <td>${reg.cargo}</td>
-                <td>${reg.idpess}</td>
+                <td>${reg.funcio}</td>
                 <td>
                     <button class="btn btn-danger btn-sm">
                         <i class="bi bi-trash"></i>
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-warning btn-sm" onclick="editar('${id}', '${reg.nome}', '${reg.email}', '${reg.cargo}', '${reg.idpess}')">
+                    <button class="btn btn-warning btn-sm" onclick="editar('${id}', '${reg.nome}', '${reg.email}', '${reg.cargo}', '${reg.funcio}')">
                         <i class="bi bi-pencil"></i>
                     </button>
                 </td>
@@ -85,16 +85,16 @@ function limpar(){
     $("#nome").val("");
     $("#email").val("");
     $("#cargo").val("");
-    $("#idpess").val("");
+    $("#funcio").val("");
     $("#nome").focus("");
 }
 
 //Função Editar
-function editar(id, nome, email, cargo, idpess){
+function editar(id, nome, email, cargo, funcio){
     $("#nome").val(nome);
     $("#email").val(email);
     $("#cargo").val(cargo);
-    $("#idpess").val(idpess);
+    $("#funcio").val(funcio);
 
     idcapturado = id;
 
