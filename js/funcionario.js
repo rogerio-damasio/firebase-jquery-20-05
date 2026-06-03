@@ -19,11 +19,7 @@ $("#salvar").click(function (){
     if (idcapturado) {//Editar
         ref.child(idcapturado).update({nome, email, cargo, funcio});
         idcapturado = null;
-        $("#salvar").text("Salvar");
-
-        $("#cancelar").hide();
-        $("#salvar").removeClass("btn-success").addClass("btn-primary");
-         $("#status"). text("");
+        cancelar();
     } else {//Salvar
         ref.push({ nome, email, cargo, funcio });    
     }
