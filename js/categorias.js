@@ -52,7 +52,7 @@ ref.on("value", dados_tabela => {
                 <td>${reg.nome}</td>
                 <td>${reg.informacoes}</td>
                 <td>
-                    <button class="btn btn-danger btn-sm onclick="excluir('${id}')">
+                    <button class="btn btn-danger btn-sm" onclick="excluir('${id}')">
                         <i class="bi bi-trash"></i>
                     </button>
                 </td>
