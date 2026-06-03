@@ -17,11 +17,7 @@ $("#salvar").click(function (){
   if (idcapturado) {
         ref.child(idcapturado).update({nome, cnpj, email, estado});
         idcapturado = null;
-        $("#salvar").text("Salvar");
-
-        $("#cancelar").hide();
-        $("#salvar").removeClass("btn-success").addClass("btn-primary");
-         $("#status"). text("");
+       cancelar();
     } else {
          ref.push({nome, cnpj, estado, email});
     }
