@@ -104,3 +104,18 @@ function editar(id, nome, cnpj, estado, email){
 
     $("#status"). text("Editanto registro...");
 }
+
+function cancelar() {
+    idcapturado = null;
+    limpar();
+    $("#status").text("");
+    $("#salvar")
+        .text("Salvar")
+        .removeClass("btn-success")
+        .addClass("btn-primary");
+    $("#cancelar").hide();
+}
+
+$("#cancelar").click(function () {
+    cancelar();
+});
