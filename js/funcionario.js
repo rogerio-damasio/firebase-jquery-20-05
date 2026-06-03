@@ -107,3 +107,18 @@ function editar(id, nome, email, cargo, funcio){
 
     $("#status"). text("Editanto registro...");
 }
+
+function cancelar() {
+    idcapturado = null;
+    limpar();
+    $("#status").text("");
+    $("#salvar")
+        .text("Salvar")
+        .removeClass("btn-success")
+        .addClass("btn-primary");
+    $("#cancelar").hide();
+}
+
+$("#cancelar").click(function () {
+    cancelar();
+});
