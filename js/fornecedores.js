@@ -56,7 +56,7 @@ ref.on("value", dados_tabela => {
                 <td>${reg.estado}</td>
                 <td>${reg.email}</td>
                 <td>
-                    <button class="btn btn-danger btn-sm">
+                    <button class="btn btn-danger btn-sm onclick="excluir('${id}')">
                         <i class="bi bi-trash"></i>
                     </button>
                 </td>
@@ -101,17 +101,25 @@ function editar(id, nome, cnpj, estado, email){
     $("#status"). text("Editanto registro...");
 }
 
-function cancelar() {
+//Função Cancelar
+function cancelar(){
     idcapturado = null;
     limpar();
     $("#status").text("");
     $("#salvar")
         .text("Salvar")
         .removeClass("btn-success")
-        .addClass("btn-primary");
-    $("#cancelar").hide();
+        .addClass("btn-primary")
+         $("#cancelar").hide();
 }
-
-$("#cancelar").click(function () {
+ 
+$("#cancelar").click(function(){
     cancelar();
 });
+ 
+//Função Excluir
+function excluir(id){
+    if(confirm("Tem certeza que deseja excluir?")){
+            db.ref("fornecedores/" + id).remove();
+        }
+}
